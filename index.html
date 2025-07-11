@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doğum Günün Kutlu Olsun, Aşkım! ❤️</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div id="startScreen" class="screen active">
+            <button id="startButton" class="btn">Tıkla</button>
+        </div>
+
+        <div id="photoScreen" class="screen">
+            <div class="photo-card-wrapper">
+                <div class="card photo-card" data-index="0">
+                    <img src="cer1.jpg" alt="Anı Fotoğrafı 1">
+                    <p>İlk buluşmamız :) Heyecanımızın en güzel yansıması (sarilirken)</p>
+                </div>
+                <div class="card photo-card" data-index="1">
+                    <img src="cer2.jpg" alt="Anı Fotoğrafı 2">
+                    <p>Aşktan geberdiğimiz anlarımız (öpüşürken)</p>
+                </div>
+                <div class="card photo-card" data-index="2">
+                    <img src="cer3.jpg" alt="Anı Fotoğrafı 3">
+                    <p>Safe Place :) (kucagindayken)</p>
+                </div>
+                <div class="card photo-card" data-index="3">
+                    <img src="cer4.jpg" alt="Anı Fotoğrafı 4">
+                    <p>Hayatımda olduğun her an özel sevgilim (bu sefer benim kucagimdayken)</p>
+                </div>
+                <div class="card photo-card" data-index="4">
+                    <img src="cer5.jpg" alt="Anı Fotoğrafı 5">
+                    <p>Gözlerimizin içi birlikte sonsuza kadar parlasın aşkım:) (yanak temasli bi foto veya video olabilir)</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="endScreen" class="screen">
+            <h2 id="endMessage" class="hidden"></h2>
+            <canvas id="confetti-canvas"></canvas>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
