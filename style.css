@@ -1,0 +1,156 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #fce4ec; /* Açık pembe arka plan */
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow: hidden; /* Taşmaları gizle */
+    text-align: center;
+    position: relative; /* confetti-canvas ve diğer öğeler için */
+}
+
+/* Konfeti Canvas */
+#confetti-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10; /* Diğer her şeyin üzerinde olması için */
+    pointer-events: none; /* Etkileşimi engelle */
+}
+
+.container {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    max-width: 500px;
+    width: 90%;
+    position: relative;
+    height: 450px; /* Sabit bir yükseklik verelim */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1; /* Diğer her şeyin üzerinde, ama konfetinin altında */
+}
+
+.screen {
+    width: 100%;
+    height: 100%;
+    position: absolute; /* Ekranların üst üste binmesini sağlar */
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0; /* Başlangıçta gizle */
+    pointer-events: none; /* Etkileşimi engelle */
+    transition: opacity 0.5s ease-in-out; /* Geçiş animasyonu */
+}
+
+.screen.active {
+    opacity: 1; /* Aktif ekranı göster */
+    pointer-events: auto; /* Etkileşime izin ver */
+}
+
+/* Başlangıç Butonu */
+.btn {
+    padding: 15px 40px;
+    font-size: 1.8em;
+    font-weight: bold;
+    color: #fff;
+    background-color: #ff6f91; /* Canlı pembe */
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #ff8eaf;
+    transform: translateY(-3px);
+}
+
+.hidden {
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+/* Fotoğraf Kartları için Konteyner */
+.photo-card-wrapper {
+    position: relative; /* İçindeki kartları konumlandırmak için */
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Her bir fotoğraf kartının stili */
+.card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    width: 100%;
+    max-width: 400px;
+    min-height: 350px;
+    transition: opacity 0.5s ease, transform 0.5s ease, box-shadow 0.3s ease; /* opacity ve transform için geçiş */
+    position: absolute; /* Tüm kartlar aynı yerde üst üste binsin */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.9); /* Başlangıçta biraz küçültülmüş */
+    opacity: 0; /* Başlangıçta tüm kartlar gizli */
+    pointer-events: none; /* Gizliyken tıklanmasın */
+    z-index: 2;
+}
+
+/* Aktif Kart (görünen kart) */
+.card.active {
+    opacity: 1; /* Sadece aktif kart görünür */
+    pointer-events: auto; /* Aktif kart tıklanabilir */
+    transform: translate(-50%, -50%) scale(1); /* Aktif olunca normal boyutuna gelsin */
+}
+
+.card:hover {
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    transform: translate(-50%, -50%) scale(1.02); /* Aktifken hover efekti */
+}
+
+/* Kart içindeki görsel */
+.card img {
+    max-width: 100%;
+    max-height: 250px; /* Görselin maksimum yüksekliği */
+    border-radius: 8px;
+    margin-bottom: 20px;
+    object-fit: contain; /* Görselin kutuya sığmasını sağlar */
+}
+
+/* Kart içindeki yazı alanı */
+.card p {
+    font-size: 1.1em;
+    color: #555;
+    line-height: 1.6;
+    text-align: center;
+}
+
+/* Bitiş Mesajı */
+#endMessage {
+    font-size: 2.3em;
+    color: #c2185b; /* Koyu pembe */
+    font-weight: bold;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    z-index: 3; /* Mesajın konfetinin üstünde olması için */
+    position: relative;
+}
